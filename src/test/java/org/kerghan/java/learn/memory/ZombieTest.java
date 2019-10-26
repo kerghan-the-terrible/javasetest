@@ -1,4 +1,4 @@
-package test.memory;
+package org.kerghan.java.learn.memory;
 
 import org.junit.Test;
 
@@ -26,7 +26,9 @@ public class ZombieTest {
     public void zombieRef() throws InterruptedException {
         staticRef = null;
         ReferenceQueue<Zombie> queue = new ReferenceQueue<>();
-        Reference<Zombie> ref = new WeakReference<>(new Zombie(), queue);
+        Zombie zombie = new Zombie();
+        Reference<Zombie> ref = new WeakReference<>(zombie, queue);
+        zombie = null;
         assertNull(staticRef);
         System.gc();
         Thread.sleep(500); //the assertion below can fail from time to time without the sleep (HotSpot JDK)
@@ -42,10 +44,12 @@ public class ZombieTest {
         Reference<Zombie> ref = new PhantomReference<>(zombie, queue);
         zombie = null;
         System.gc();
-        Thread.sleep(500);
+        Thread.sleep(500); //the assertion below can fail from time to time without the sleep (HotSpot JDK)
         assertNotNull(staticRef);
         Reference<? extends Zombie> queueRef;
         //queueRef = queue.remove(); //will hang
+        queueRef = queue.poll();
+        assertNull(queueRef);
         staticRef = null;
         System.gc();
         queueRef = queue.remove();

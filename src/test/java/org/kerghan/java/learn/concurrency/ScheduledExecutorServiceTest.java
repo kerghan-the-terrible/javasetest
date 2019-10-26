@@ -1,4 +1,4 @@
-package test.concurrency;
+package org.kerghan.java.learn.concurrency;
 
 import org.junit.Test;
 
@@ -25,7 +25,7 @@ public class ScheduledExecutorServiceTest {
             counter++;
             System.out.println("launch number: " + counter);
         }, 0, 5, TimeUnit.SECONDS);
-            Thread.sleep(30000);
+        Thread.sleep(30000);
         service.shutdown();
         assertEquals(2, counter);
     }

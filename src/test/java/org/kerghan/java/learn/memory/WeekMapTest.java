@@ -1,4 +1,4 @@
-package test.memory;
+package org.kerghan.java.learn.memory;
 
 import org.junit.Test;
 

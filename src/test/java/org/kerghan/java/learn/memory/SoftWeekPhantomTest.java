@@ -1,11 +1,8 @@
-package test.memory;
+package org.kerghan.java.learn.memory;
 
 import org.junit.Test;
 
 import java.lang.ref.*;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
 
 import static org.junit.Assert.*;
 
