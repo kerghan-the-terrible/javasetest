@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseAtomicsTest {
 
     @Test
-    public void testInstangeRef() {
+    public void basicAtomicTest() {
         AtomicInteger atomic = new AtomicInteger();
         ExecutorService executor = Executors.newCachedThreadPool();
         for (int i = 0; i < 10; i++)
